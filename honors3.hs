@@ -35,7 +35,7 @@ If a and b are equal to the first element of LCS, then the rest of the sublist i
 
 
 
-
+//temp
  l1 is an empty list, then there is no common sublist, and so the integer returned needs to be 0, which is what lcsLen does.
 Base case 2: If l2 is an empty list, then there is no common sublist, and so the integer returned needs to be 0, which is what lcsLen does.
 
