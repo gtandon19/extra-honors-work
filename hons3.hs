@@ -16,30 +16,28 @@ lcsLen (a:xs) (b:ys) | (a==b) = (lcsLen (xs) (ys)) + (1)
                      
                      
 {- 
+
+
 Pt 2:
  Write a proof by induction that your “lcsLen” algorithm is correct, i.e. a proof of the the following claim: “For any lists l1 and l2, lcsLen returns the length of some longest common sublist.” To make the proof easier you may assume that within a list there are no duplicate values (but your code should still work even if there are duplicates). (Make sure your ‘induction variable’ is something that decreases in every recursive call.)
 
 Prove that: For any lists l1 and l2, lcsLen returns the length of some common sublist.
-Proof by induction on k, which is the length of the both the lists combined.
 
-Base case: If k=0, then both lists are empty so the integer returned needs to be 0 which is what lcsLen does.
+Let the length of list l1 be n, and length of list l2 be m. Let n<=m without loss of generality.
 
-Induction Hypothesis: Let k > 0. Suppose that lcslen returns the length of the longest common sublist for any lists l1, l2 with combined length of n>0 to n=k-1.
+Proof by induction on n, which is the length of list 1.
+
+Base case: If n=0, then there is no common sublist. lcsLen returns 0 for these cases, and so the algorithm holds.
+
+Induction Hypothesis: Let lcsLen of l1, l2 be k. For length of l1 = n.
 
 Induction Step: 
-Case 1: When k = length of l1, that means that length of l2 is 0, so there is no common sublist, so it returns a 0.
-Case 2: When k = length of l2, that means that length of l1 is 0, so there is no common sublist, so it returns a 0.
-Case 3: Otherwise, let a be the first item of the l1, b be the first item of l2.
-If we take a longest common sublist of the 2 lists:
-If a and b are equal to the first element of LCS, then the rest of the sublist is in rest of rest of l1, 
+Suppose we add another element to and increase length to n+1.
+Case 1: When the n+1th element is not present in l2:
+Then by induction hypothesis we know lcsLen already returns the length of the largest common sublist (k).
+Case 2: When the n+1th element is present in l2:
+Then the lcsLen function will return (k+1) which is what we needed to show.
 
-
-
-//temp
- l1 is an empty list, then there is no common sublist, and so the integer returned needs to be 0, which is what lcsLen does.
-Base case 2: If l2 is an empty list, then there is no common sublist, and so the integer returned needs to be 0, which is what lcsLen does.
-
-Induction Hypothesis: Suppose that lcslen returns the length of the longest common sublist when 
-
+Hence the algorithm works.
 
 -}
